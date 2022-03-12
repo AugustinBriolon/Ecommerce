@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Entity\User;
+use App\Entity\Product;
+use App\Entity\ProductCategorie;
 use Symfony\Component\HttpFoundation\Response;
 use App\Controller\Admin\ProductCrudController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,13 +25,17 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('E Commerce');
+            ->setTitle('E Commerce Apple');
     }
 
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::section('Core');
-        yield MenuItem::linkToCrud('User', 'fas fa-building', User::class);
+        yield MenuItem::section('Team');
+        yield MenuItem::linkToCrud('User', 'fas fa-users', User::class);
+        yield MenuItem::section('Stuff');
+        yield MenuItem::linkToCrud('Products', 'fas fa-mobile', Product::class);
+        yield MenuItem::linkToCrud('Product Categories', 'fas fa-boxes', ProductCategorie::class);
+
     }
 }
