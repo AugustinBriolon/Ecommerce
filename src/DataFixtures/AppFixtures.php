@@ -31,16 +31,13 @@ class AppFixtures extends Fixture
             $products->setProductCategorie($productCategorieEntity);
             $products->setName($productCategorie);
             $products->setPrice(rand(100, 1000) / 1);
-            $products->setCreatedAt(new \DateTime());
-            $products->setUpdatedAt(new \DateTime());
 
             $manager->persist($products);
         }
 
-        $manager->flush();
     }
 
-    for ($i = 1; $i <= 10; $i++) {
+    for ($i = 1; $i <= 50; $i++) {
         $user = new User;
         $user->setEmail('test' . $i . '@gmail.com');
         $password = $this->hasher->hashPassword($user, 'password');
@@ -52,5 +49,7 @@ class AppFixtures extends Fixture
 
         $manager->persist($user);
     }
+
+    $manager->flush();
 }
 }
