@@ -31,6 +31,8 @@ class AppFixtures extends Fixture
             $products->setProductCategorie($productCategorieEntity);
             $products->setName($productCategorie);
             $products->setPrice(rand(100, 1000) / 1);
+            $products->setStock(rand(100, 1000) / 2);
+            $products->setDescription('This is the best you can find !');
 
             $manager->persist($products);
         }
@@ -39,7 +41,7 @@ class AppFixtures extends Fixture
 
     for ($i = 1; $i <= 50; $i++) {
         $user = new User;
-        $user->setEmail('test' . $i . '@gmail.com');
+        $user->setEmail('user' . $i . '@apple.com');
         $password = $this->hasher->hashPassword($user, 'password');
         $user->setPassword($password);
         $user->setRoles([

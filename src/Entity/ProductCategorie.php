@@ -87,4 +87,10 @@ class ProductCategorie
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        // TODO: Implement toString() method.
+        return $this->getName();
+    }
 }
